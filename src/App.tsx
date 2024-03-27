@@ -9,6 +9,10 @@ import Login from './routes/Login';
 import CreateAccount from './routes/CreateAccount';
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
+import { useEffect, useState } from 'react';
+import Loading from './components/Loading';
+import { auth } from './firebase';
+import styled from 'styled-components';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -45,13 +49,29 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'system-ui', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
 `;
-
+const Wrapper = styled.div`
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+`;
 function App() {
+  const [isLoading, setLoading] = useState(true);
+  const init = async () => {
+    await auth.authStateReady();
+    setLoading(false);
+  };
+  useEffect(() => {
+    init();
+  }, []);
   return (
-    <>
+    <Wrapper>
       <GlobalStyles />
-      <RouterProvider router={router} />
-    </>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <RouterProvider router={router} />
+      )}
+    </Wrapper>
   );
 }
 export default App;
