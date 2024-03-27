@@ -1,7 +1,89 @@
+import { useState } from 'react';
+import { auth } from '../firebase';
+import { Link, useNavigate } from 'react-router-dom';
+import { FirebaseError } from 'firebase/app';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import {
+  Wrapper,
+  Title,
+  Form,
+  Input,
+  Error,
+  Switcher,
+} from '../components/AuthComponent';
 export default function Login() {
+  const navigate = useNavigate();
+  const [isLoading, setLoading] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const onChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const {
+      target: { name, value },
+    } = e;
+    if (name === 'email') {
+      setEmail(value);
+    } else if (name === 'password') {
+      setPassword(value);
+    }
+  };
+  const onSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
+    setError('');
+    e.preventDefault();
+    if (isLoading || email === '' || password === '')
+      return;
+    try {
+      setLoading(true);
+      await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      navigate('/');
+    } catch (error) {
+      if (error instanceof FirebaseError) {
+        setError(error.message);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <>
-      <h1>Login</h1>
-    </>
+    <Wrapper>
+      <Title>Login ✖</Title>
+      <Form onSubmit={onSubmit}>
+        <Input
+          name="email"
+          placeholder="email"
+          type="email"
+          value={email}
+          required
+          onChange={onChange}
+        />
+        <Input
+          name="password"
+          placeholder="password"
+          type="password"
+          value={password}
+          required
+          onChange={onChange}
+        />
+        <Input
+          type="submit"
+          value={isLoading ? 'Loading' : 'Login'}
+        />
+      </Form>
+      {error !== '' ? <Error>{error}</Error> : null}
+      <Switcher>
+        계정이 없으신가요?{' '}
+        <Link to="/create-account">회원가입</Link>
+      </Switcher>
+    </Wrapper>
   );
 }
