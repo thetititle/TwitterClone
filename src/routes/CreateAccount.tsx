@@ -8,11 +8,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FirebaseError } from 'firebase/app';
 import {
   Wrapper,
+  Wrap,
   Title,
   Form,
   Input,
   Error,
   Switcher,
+  BigLogo,
+  BtnWrap,
 } from '../components/AuthComponent';
 import GithubLoginBtn from '../components/GithubLoginBtn';
 import GoogleLoginBtn from '../components/GoogleLoginBtn';
@@ -83,44 +86,49 @@ export default function CreateAccount() {
 
   return (
     <Wrapper>
-      <Title>Login Twitter Clone</Title>
-      <Form onSubmit={onSubmit}>
-        <Input
-          name="name"
-          placeholder="name"
-          type="text"
-          value={name}
-          required
-          onChange={onChange}
-        />
-        <Input
-          name="email"
-          placeholder="email"
-          type="email"
-          value={email}
-          required
-          onChange={onChange}
-        />
-        <Input
-          name="password"
-          placeholder="password"
-          type="password"
-          value={password}
-          required
-          onChange={onChange}
-        />
-        <Input
-          type="submit"
-          value={isLoading ? 'Loading' : 'Create Account'}
-        />
-      </Form>
-      {error !== '' ? <Error>{error}</Error> : null}
-      <Switcher>
-        이미 계정이 있으신가요?{' '}
-        <Link to="/login">로그인</Link>
-      </Switcher>
-      <GithubLoginBtn />
-      <GoogleLoginBtn />
+      <BigLogo src="/logo.svg" />
+      <Wrap>
+        <Title>Join Twitter Clone</Title>
+        <Form onSubmit={onSubmit}>
+          <Input
+            name="name"
+            placeholder="name"
+            type="text"
+            value={name}
+            required
+            onChange={onChange}
+          />
+          <Input
+            name="email"
+            placeholder="email"
+            type="email"
+            value={email}
+            required
+            onChange={onChange}
+          />
+          <Input
+            name="password"
+            placeholder="password"
+            type="password"
+            value={password}
+            required
+            onChange={onChange}
+          />
+          <Input
+            type="submit"
+            value={isLoading ? 'Loading' : 'Create Account'}
+          />
+        </Form>
+        {error !== '' ? <Error>{error}</Error> : null}
+        <Switcher>
+          이미 계정이 있으신가요?{' '}
+          <Link to="/login">로그인</Link>
+        </Switcher>
+        <BtnWrap>
+          <GithubLoginBtn />
+          <GoogleLoginBtn />
+        </BtnWrap>
+      </Wrap>
     </Wrapper>
   );
 }

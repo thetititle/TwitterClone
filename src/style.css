@@ -1,0 +1,48 @@
+/*
+* File       : styles.scss
+* Date       : 2024. 03. 28
+* Author     : SUJI BAE (THETITITLE)
+*/
+
+/* **************************************** *
+* FONT
+* **************************************** */
+@import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap');
+
+@font-face {
+  font-family: 'AppleSDGothicNeoEB00';
+  src: url('../public/font/AppleSDGothicNeoEB00.woff2')
+      format('woff2'),
+    url('../public/font/AppleSDGothicNeoEB00.woff')
+      format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'AppleSDGothicNeoH00';
+  src: url('../public/font/AppleSDGothicNeoH00.woff2')
+      format('woff2'),
+    url('../public/font/AppleSDGothicNeoH00.woff')
+      format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'AppleSDGothicNeoR00';
+  src: url('../public/font/AppleSDGothicNeoR00.woff2')
+      format('woff2'),
+    url('../public/font/AppleSDGothicNeoR00.woff')
+      format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+body {
+  font-family: 'AppleSDGothicNeoR00', 'Gothic A1',
+    'Noto Sans KR', 'sans-serif';
+  font-weight: 300;
+  font-style: normal;
+  word-break: keep-all;
+}

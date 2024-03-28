@@ -2,7 +2,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from 'firebase/auth';
-import { Button, Logo } from './AuthComponent';
+import { Button, BtnLogo } from './AuthComponent';
 import { auth } from '../firebase';
 import { useNavigate } from 'react-router-dom';
 export default function GoogleLoginBtn() {
@@ -20,7 +20,7 @@ export default function GoogleLoginBtn() {
 
   return (
     <Button onClick={onClick}>
-      <Logo src="/google-logo.svg"></Logo>
+      <BtnLogo src="/google-logo.svg"></BtnLogo>
       Google으로 로그인하기
     </Button>
   );

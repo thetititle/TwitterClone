@@ -2,7 +2,7 @@ import {
   GithubAuthProvider,
   signInWithPopup,
 } from 'firebase/auth';
-import { Button, Logo } from './AuthComponent';
+import { Button, BtnLogo } from './AuthComponent';
 import { auth } from '../firebase';
 import { useNavigate } from 'react-router-dom';
 export default function GithubLoginBtn() {
@@ -20,7 +20,7 @@ export default function GithubLoginBtn() {
 
   return (
     <Button onClick={onClick}>
-      <Logo src="/github-logo.svg"></Logo>
+      <BtnLogo src="/github-logo.svg"></BtnLogo>
       Github으로 로그인하기
     </Button>
   );

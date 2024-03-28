@@ -5,13 +5,18 @@ import { FirebaseError } from 'firebase/app';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import {
   Wrapper,
+  Wrap,
   Title,
   Form,
   Input,
   Error,
   Switcher,
+  BigLogo,
+  BtnWrap,
 } from '../components/AuthComponent';
 import GithubLoginBtn from '../components/GithubLoginBtn';
+import GoogleLoginBtn from '../components/GoogleLoginBtn';
+import FindPasswordBtn from '../components/FindPasswordBtn';
 export default function Login() {
   const navigate = useNavigate();
   const [isLoading, setLoading] = useState(false);
@@ -57,35 +62,42 @@ export default function Login() {
 
   return (
     <Wrapper>
-      <Title>Join Twitter Clone</Title>
-      <Form onSubmit={onSubmit}>
-        <Input
-          name="email"
-          placeholder="email"
-          type="email"
-          value={email}
-          required
-          onChange={onChange}
-        />
-        <Input
-          name="password"
-          placeholder="password"
-          type="password"
-          value={password}
-          required
-          onChange={onChange}
-        />
-        <Input
-          type="submit"
-          value={isLoading ? 'Loading' : 'Login'}
-        />
-      </Form>
-      {error !== '' ? <Error>{error}</Error> : null}
-      <Switcher>
-        계정이 없으신가요?{' '}
-        <Link to="/create-account">회원가입</Link>
-      </Switcher>
-      <GithubLoginBtn />
+      <BigLogo src="/logo.svg" />
+      <Wrap>
+        <Title>Login Twitter Clone</Title>
+        <Form onSubmit={onSubmit}>
+          <Input
+            name="email"
+            placeholder="Email"
+            type="email"
+            value={email}
+            required
+            onChange={onChange}
+          />
+          <Input
+            name="password"
+            placeholder="Password"
+            type="password"
+            value={password}
+            required
+            onChange={onChange}
+          />
+          <Input
+            type="submit"
+            value={isLoading ? 'Loading' : 'LOGIN'}
+          />
+        </Form>
+        {error !== '' ? <Error>{error}</Error> : null}
+        <Switcher>
+          계정이 없으신가요?{' '}
+          <Link to="/create-account">회원가입</Link>
+        </Switcher>
+        <BtnWrap>
+          <GithubLoginBtn />
+          <GoogleLoginBtn />
+          <FindPasswordBtn />
+        </BtnWrap>
+      </Wrap>
     </Wrapper>
   );
 }

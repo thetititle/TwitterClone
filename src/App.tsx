@@ -14,6 +14,9 @@ import Loading from './components/Loading';
 import { auth } from './firebase';
 import styled from 'styled-components';
 import ProtectRoute from './components/ProtectRoute';
+import AppleSDGothicNeoEB00 from '../public/font/AppleSDGothicNeoEB00.woff';
+import AppleSDGothicNeoH00 from '../public/font/AppleSDGothicNeoH00.woff';
+import AppleSDGothicNeoR00 from '../public/font/AppleSDGothicNeoR00.woff';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -48,10 +51,28 @@ const GlobalStyles = createGlobalStyle`
   *{
     box-sizing: border-box;
   }
+  @font-face {
+    font-family: 'AppleSDGothicNeoEB00';
+    src: local('AppleSDGothicNeoEB00'), local('AppleSDGothicNeoEB00');
+    font-style: normal;
+    src: url(${AppleSDGothicNeoEB00}) format('woff');
+  }
+  @font-face {
+    font-family: 'AppleSDGothicNeoH00';
+    src: local('AppleSDGothicNeoH00'), local('AppleSDGothicNeoH00');
+    font-style: normal;
+    src: url(${AppleSDGothicNeoH00}) format('woff');
+  }
+  @font-face {
+    font-family: 'AppleSDGothicNeoR00';
+    src: local('AppleSDGothicNeoR00'), local('AppleSDGothicNeoR00');
+    font-style: normal;
+    src: url(${AppleSDGothicNeoR00}) format('woff');
+  }
   body{
-    background: black;
-    color: white;
-    font-family: 'system-ui', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: #000000;
+    color: #ffffff;
+    font-family: AppleSDGothicNeoR00, sans-serif, Arial;
   }
 `;
 const Wrapper = styled.div`
