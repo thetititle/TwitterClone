@@ -4,12 +4,13 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 360px;
+  width: 300px;
   padding: 50px 0px;
-  gap: 50px;
+  gap: 20px;
 `;
 export const Title = styled.h1`
-  font-size: 42px;
+  font-size: 32px;
+  text-align: center;
 `;
 export const Form = styled.form`
   display: flex;
@@ -39,4 +40,22 @@ export const Switcher = styled.span`
     color: #1d9bf0;
     text-decoration: none;
   }
+`;
+
+export const Button = styled.button`
+  width: 100%;
+  background-color: #ffffff;
+  font-weight: 500;
+  padding: 10px 20px;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+`;
+export const Logo = styled.img`
+  height: 25px;
 `;

@@ -11,6 +11,7 @@ import {
   Error,
   Switcher,
 } from '../components/AuthComponent';
+import GithubLoginBtn from '../components/GithubLoginBtn';
 export default function Login() {
   const navigate = useNavigate();
   const [isLoading, setLoading] = useState(false);
@@ -56,7 +57,7 @@ export default function Login() {
 
   return (
     <Wrapper>
-      <Title>Login ✖</Title>
+      <Title>Join Twitter Clone</Title>
       <Form onSubmit={onSubmit}>
         <Input
           name="email"
@@ -84,6 +85,7 @@ export default function Login() {
         계정이 없으신가요?{' '}
         <Link to="/create-account">회원가입</Link>
       </Switcher>
+      <GithubLoginBtn />
     </Wrapper>
   );
 }

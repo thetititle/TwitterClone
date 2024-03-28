@@ -14,6 +14,8 @@ import {
   Error,
   Switcher,
 } from '../components/AuthComponent';
+import GithubLoginBtn from '../components/GithubLoginBtn';
+import GoogleLoginBtn from '../components/GoogleLoginBtn';
 
 export default function CreateAccount() {
   const navigate = useNavigate();
@@ -81,7 +83,7 @@ export default function CreateAccount() {
 
   return (
     <Wrapper>
-      <Title>Join ✖</Title>
+      <Title>Login Twitter Clone</Title>
       <Form onSubmit={onSubmit}>
         <Input
           name="name"
@@ -117,6 +119,8 @@ export default function CreateAccount() {
         이미 계정이 있으신가요?{' '}
         <Link to="/login">로그인</Link>
       </Switcher>
+      <GithubLoginBtn />
+      <GoogleLoginBtn />
     </Wrapper>
   );
 }
