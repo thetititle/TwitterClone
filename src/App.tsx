@@ -74,6 +74,10 @@ const GlobalStyles = createGlobalStyle`
     color: #ffffff;
     font-family: AppleSDGothicNeoR00, sans-serif, Arial;
   }
+  a{
+    color: inherit;
+    text-decoration: none;
+  }
 `;
 const Wrapper = styled.div`
   height: 100vh;

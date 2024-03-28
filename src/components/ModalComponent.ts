@@ -52,6 +52,7 @@ export const Input = styled.input`
     outline: none;
     border-color: transparent;
     box-shadow: inset 0 0 0 5px #1d9bf0;
+    transition: 0.3s;
   }
   &[type='submit'] {
     cursor: pointer;
@@ -60,6 +61,7 @@ export const Input = styled.input`
     background-color: #0060a1;
     color: #ffffff;
     border-color: transparent;
+    transition: 0.3s;
     &:hover {
       background-color: #1d9bf0;
       transition: 0.3s;

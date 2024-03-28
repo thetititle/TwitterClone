@@ -3,7 +3,7 @@ export const Wrapper = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 60px;
 `;
 export const Wrap = styled.div`
   display: flex;
@@ -101,6 +101,6 @@ export const BtnLogo = styled.img`
   height: 25px;
 `;
 export const BigLogo = styled.img`
-  height: 510px;
+  height: 200px;
   object-fit: cover;
 `;
