@@ -50,7 +50,7 @@ export default function Login() {
         email,
         password
       );
-      navigate('/');
+      navigate('/home');
     } catch (error) {
       if (error instanceof FirebaseError) {
         setError(error.message);

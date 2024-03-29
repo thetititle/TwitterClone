@@ -70,7 +70,7 @@ export default function CreateAccount() {
       await updateProfile(credential.user, {
         displayName: name,
       });
-      navigate('/');
+      navigate('/home');
       // 3. Dashboard에서 유저가 누구인지 표기하기 위해 데이터 받아오기
     } catch (error) {
       // error가 FirebaseError의 instance라면
