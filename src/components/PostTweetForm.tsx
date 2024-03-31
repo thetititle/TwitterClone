@@ -1,7 +1,16 @@
-import { addDoc, collection } from 'firebase/firestore';
+import {
+  addDoc,
+  collection,
+  updateDoc,
+} from 'firebase/firestore';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { auth, db } from '../firebase';
+import { auth, db, storage } from '../firebase';
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+} from 'firebase/storage';
 
 const Form = styled.form`
   display: flex;
@@ -85,7 +94,6 @@ export default function PostTweetForm() {
   const onFileChange = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
-    console.log(e);
     const { files } = e.target;
     if (files && files.length === 1) {
       setFile(files[0]);
@@ -104,15 +112,29 @@ export default function PostTweetForm() {
       return;
     try {
       setLoading(true);
-      await addDoc(collection(db, 'tweets'), {
+      const doc = await addDoc(collection(db, 'tweets'), {
         tweet,
         creatAt: Date.now(),
         userName: user.displayName || 'Anonymous',
         userId: user.uid,
       });
+      if (hasFile) {
+        const locationRef = ref(
+          storage,
+          `tweets/${user.uid}-${user.displayName}/${doc.id}`
+        );
+        const result = await uploadBytes(
+          locationRef,
+          hasFile
+        );
+        const url = await getDownloadURL(result.ref);
+        await updateDoc(doc, { imgUrl: url });
+      }
     } catch (error) {
       console.log('에러', error);
     } finally {
+      setTweet('');
+      setFile(null);
       setLoading(false);
     }
   };
