@@ -96,7 +96,9 @@ function App() {
     }
   };
   window.onunload = () => {
-    auth.signOut();
+    if (!isLoading) {
+      auth.signOut();
+    }
   };
 
   useEffect(() => {
