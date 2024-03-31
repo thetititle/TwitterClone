@@ -124,6 +124,7 @@ export default function PostTweetForm() {
         placeholder="무슨일이 일어나고 있나요?"
         value={tweet}
         onChange={onTextChange}
+        required
       />
       <FileUploadBtn htmlFor="file">
         {hasFile ? 'Added photo' : 'Add photo'}

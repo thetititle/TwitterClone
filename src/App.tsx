@@ -90,9 +90,19 @@ function App() {
     await auth.authStateReady();
     setLoading(false);
   };
+  window.onbeforeunload = () => {
+    if (!isLoading) {
+      return '';
+    }
+  };
+  window.onunload = () => {
+    auth.signOut();
+  };
+
   useEffect(() => {
     init();
   }, []);
+
   return (
     <Wrapper>
       <GlobalStyles />
