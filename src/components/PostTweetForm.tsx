@@ -95,9 +95,12 @@ export default function PostTweetForm() {
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     const { files } = e.target;
-    if (files && files.length === 1) {
+    if (files) {
       setFile(files[0]);
     }
+    // if (files && files.length === 1) {
+    //   setFile(files[0]);
+    // }
   };
   const onSubmit = async (
     e: React.FormEvent<HTMLFormElement>

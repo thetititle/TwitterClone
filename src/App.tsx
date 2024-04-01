@@ -78,6 +78,9 @@ const GlobalStyles = createGlobalStyle`
     color: inherit;
     text-decoration: none;
   }
+  ::-webkit-scrollbar {
+    display:none;
+    }
 `;
 const Wrapper = styled.div`
   height: 100vh;
